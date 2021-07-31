@@ -7,6 +7,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
+  name = "Tile one";
+  num = 0;
+
+  disable = false;
+
+  fontSize = '24px';
+
+  formModel = {
+    userEmail: '',
+    password: ''
+  }
+
+
+
   constructor() { }
 
   ngOnInit(): void {

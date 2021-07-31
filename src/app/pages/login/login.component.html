@@ -1,3 +1,21 @@
 <p>login works!</p>
 
+<!-- {{ name }}
+{{ num }}
+<input type="text" placeholder="Type here" [disabled]="disable" />
+<button class="btn btn-success" [disabled]="disable">Login</button>
+
+<p [style.background-color]="num > 0 ? 'green' : 'red'">
+  some paragraph with grey background
+</p>
+
+<p [className]="'custom-font'">some paragraph with grey background</p> -->
+
+<input type="text" placeholder="email" [(ngModel)]="formModel.userEmail"/>
+<input type="password" placeholder="password"  [(ngModel)]="formModel.password" />
+
+{{formModel.userEmail}}
+
+{{1+2}}
+
 <app-footer></app-footer>
