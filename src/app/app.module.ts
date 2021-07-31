@@ -1,21 +1,19 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { TooltipModule } from 'ngx-bootstrap/tooltip';
-import { ShareModule } from './shared/module/share.module';
+import { PagesModule } from './pages/pages.module';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    TooltipModule.forRoot(),
-    ShareModule
+    PagesModule
   ],
   providers: [],
   bootstrap: [AppComponent]

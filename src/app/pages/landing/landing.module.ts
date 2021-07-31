@@ -1,15 +1,16 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { ShareModule } from './../../shared/module/share.module';
 import { LandingComponent } from './landing.component';
-import { ShareModule } from 'src/app/shared/module/share.module';
 
 
 
 @NgModule({
   declarations: [LandingComponent],
   imports: [
-    CommonModule,
     ShareModule
+  ],
+  exports:[
+    
   ]
 })
 export class LandingModule { }
