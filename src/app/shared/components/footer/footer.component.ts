@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-footer',
@@ -7,9 +7,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FooterComponent implements OnInit {
 
+  @Input()
+  year: string;
+
+  @Input()
+  licence: string;
+
+  @Output() data = new EventEmitter<string>();
+
+  model={
+    result:''
+  }
+
+
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  sendDataToParent(){
+    this.data.emit(this.model.result);
   }
 
 }

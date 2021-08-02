@@ -26,4 +26,22 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
 
+
+  model={
+    num1:0,
+    num2:0
+  }
+
+  result;
+
+  sum():number{
+    this.result=this.model.num1+this.model.num2;
+    return this.result;
+  }
+
+  sum2():void{
+    console.log('>>>>>>>>>>>>');
+
+  }
+
 }

@@ -11,11 +11,22 @@
 
 <p [className]="'custom-font'">some paragraph with grey background</p> -->
 
-<input type="text" placeholder="email" [(ngModel)]="formModel.userEmail"/>
+<!-- <input type="text" placeholder="email" [(ngModel)]="formModel.userEmail"/>
 <input type="password" placeholder="password"  [(ngModel)]="formModel.password" />
 
 {{formModel.userEmail}}
 
-{{1+2}}
+{{1+2}} -->
+
+<input type="number" placeholder="Num1" [(ngModel)]="this.model.num1"/>
+<input type="number" placeholder="Num2" [(ngModel)]="this.model.num2"/>
+
+<button type="button" (click)="sum()">SUM</button>
+
+<p [style.color]="result > 0 ? 'green' : 'red'">
+  {{result}}
+</p>
+
+
 
 <app-footer></app-footer>
