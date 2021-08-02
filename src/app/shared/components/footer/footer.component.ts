@@ -25,6 +25,9 @@ export class FooterComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  /**
+   *  send data from child to parent
+   */
   sendDataToParent(){
     this.data.emit(this.model.result);
   }
