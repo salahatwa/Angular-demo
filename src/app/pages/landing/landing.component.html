@@ -1,7 +1,51 @@
-<p>{{dataFromChild}}</p>
+<p>{{ dataFromChild }}</p>
 
-<input type="text" placeholder="Enter year" [(ngModel)]="model.year"/>
+<input type="text" placeholder="Enter year" [(ngModel)]="model.year" />
 
-<app-footer [year]="model.year" [licence]="'2copyrights'"  
-(data)="comingData($event)"
+
+
+<table>
+  <thead>
+    <tr>
+      <th>name</th>
+      <th>age</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let customer of customers">
+      <div *ngIf="customer.age>10">
+        <td>{{ customer.name }}</td>
+        <td>{{ customer.age }}</td>
+      </div>
+    </tr>
+  </tbody>
+</table>
+
+
+<div [ngColor]="colors">
+  SAMPLE GREEN
+</div>
+
+<div [ngSwitch]="type">
+
+    <div *ngSwitchCase="'A'">
+      sample A
+    </div>
+
+    <div *ngSwitchCase="'B'">
+       SAMPLE B
+    </div>
+
+    <div *ngSwitchCase="'C'">
+        SAMPLE c
+     </div>
+     <div *ngSwitchDefault>
+        dEFAULT
+     </div>
+</div>
+
+<app-footer
+  [year]="model.year"
+  [licence]="'2copyrights'"
+  (data)="comingData($event)"
 ></app-footer>

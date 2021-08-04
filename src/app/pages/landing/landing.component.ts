@@ -7,6 +7,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LandingComponent implements OnInit {
 
+  colors=['text-success','bg-info'];
+  type='BSDS';
+
+  customers = [{
+    name: 'Ahmed',
+    age: 10
+  }, {
+    name: 'mohamed',
+    age: 20
+  }, {
+    name: 'kjln',
+    age: 11
+  }];
+
   model = {
     year: '2021'
   }
@@ -16,6 +30,7 @@ export class LandingComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    console.log("INTIALIZATION");
   }
 
   comingData(result: string) {

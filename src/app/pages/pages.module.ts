@@ -7,8 +7,8 @@ import { LoginModule } from './login/login.module';
 @NgModule({
   declarations: [],
   imports: [
-    LoginModule,
-    LandingModule
+    // LoginModule,
+    // LandingModule
   ]
 })
 export class PagesModule { }

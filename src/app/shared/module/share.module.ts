@@ -3,10 +3,11 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { FooterComponent } from '../components/footer/footer.component';
 import { FormsModule } from '@angular/forms';
+import { CustomDirective } from '../directive/custom.directive';
 
 
 @NgModule({
-  declarations: [FooterComponent],
+  declarations: [FooterComponent,CustomDirective],
   imports: [
     CommonModule,
     RouterModule,
@@ -16,7 +17,8 @@ import { FormsModule } from '@angular/forms';
     CommonModule,
     RouterModule,
     FormsModule,
-    FooterComponent
+    FooterComponent,
+    CustomDirective
   ]
 })
 export class ShareModule { }
