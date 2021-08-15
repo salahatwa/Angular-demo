@@ -2,23 +2,29 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { FooterComponent } from '../components/footer/footer.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CustomDirective } from '../directive/custom.directive';
+import { TempConverterPipe } from '../pipes/temp-converter.pipe';
+import { BrowserModule } from '@angular/platform-browser';
 
 
 @NgModule({
-  declarations: [FooterComponent,CustomDirective],
+  declarations: [FooterComponent,CustomDirective,TempConverterPipe],
   imports: [
     CommonModule,
+    BrowserModule,
     RouterModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   exports: [
     CommonModule,
     RouterModule,
     FormsModule,
+    ReactiveFormsModule,
     FooterComponent,
-    CustomDirective
+    CustomDirective,
+    TempConverterPipe
   ]
 })
 export class ShareModule { }

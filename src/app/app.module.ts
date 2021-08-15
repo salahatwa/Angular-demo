@@ -3,7 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PagesModule } from './pages/pages.module';
-import { CustomDirective } from './shared/directive/custom.directive';
 
 
 @NgModule({
@@ -14,6 +13,8 @@ import { CustomDirective } from './shared/directive/custom.directive';
     BrowserModule,
     AppRoutingModule,
     PagesModule
+  ],
+  exports: [
   ],
   providers: [],
   bootstrap: [AppComponent]

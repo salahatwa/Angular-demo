@@ -1,4 +1,15 @@
-<p>{{ dataFromChild }}</p>
+<!-- <p>{{ dataFromChild }}</p>
+
+
+<p>My Date:{{date| date:'yyyy-mm-dd HH:MM'}}</p>
+
+<p>My Num:{{num| number:'1.1-2'}}</p>
+
+<p>My text:{{text| uppercase | lowercase}}</p>
+
+<p>SLICE My text:{{text| slice:0:6}}</p>
+
+<p>MY Custom Pip : {{num | tempConverter:3:'CELCIUS'}}</p>
 
 <input type="text" placeholder="Enter year" [(ngModel)]="model.year" />
 
@@ -22,7 +33,11 @@
 </table>
 
 
-<div [ngColor]="colors">
+<input type="text" placeholder="Enter Color" [(ngModel)]="colorVal" />
+
+
+
+<div [ngColor]="colorVal">
   SAMPLE GREEN
 </div>
 
@@ -44,8 +59,92 @@
      </div>
 </div>
 
+{{url}}
+<ul>
+  <li *ngFor="let item of arr1;trackBy:identity">{{item.id}}-{{item.name}}-{{item.age}}</li>
+</ul>
+
+<button (click)="replace()">REPLACE</button>
+
 <app-footer
   [year]="model.year"
   [licence]="'2copyrights'"
   (data)="comingData($event)"
-></app-footer>
+></app-footer> -->
+
+<form #contactForm="ngForm" (ngSubmit)="onSumbit(contactForm)">
+  <p>
+    <label for="firstname">First Name</label>
+    <input
+      type="text"
+      id="firstname"
+      name="firstname"
+      [(ngModel)]="contactModel.firstname"
+    />
+  </p>
+
+  <p>
+    <label for="lastname">Last Name</label>
+    <input
+      type="text"
+      id="lastname"
+      name="lastname"
+      [(ngModel)]="contactModel.lastname"
+    />
+  </p>
+
+  <p>
+    <label for="email">Email </label>
+    <input
+      type="text"
+      id="email"
+      name="email"
+      [(ngModel)]="contactModel.email"
+    />
+  </p>
+
+  <p>
+    <label for="gender">Geneder</label>
+    <input
+      type="radio"
+      name="gender"
+      [(ngModel)]="contactModel.gender"
+      value="male"
+    />
+    Male
+    <input
+      type="radio"
+      name="gender"
+      [(ngModel)]="contactModel.gender"
+      value="female"
+    />
+    Female
+  </p>
+
+  <p>
+    <label for="isMarried">Married</label>
+    <input
+      type="checkbox"
+      id="isMarried"
+      name="isMarried"
+      [(ngModel)]="contactModel.isMarried"
+    />
+  </p>
+
+  <p>
+    <label for="country">country </label>
+    <select name="country" id="country" [(ngModel)]="contactModel.country">
+      <option selected="" value=""></option>
+      <option [ngValue]="c.id" *ngFor="let c of countryList">
+        {{ c?.name }}
+      </option>
+    </select>
+  </p>
+
+  <p>
+    <button type="submit">Submit</button>
+  </p>
+</form>
+
+{{ contactModel | json }}
+<!-- <app-footer></app-footer> -->

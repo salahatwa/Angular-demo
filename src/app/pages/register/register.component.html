@@ -1,2 +1,99 @@
-<p>register works!</p>
-<app-footer></app-footer>
+<form #contactForm="ngForm" (ngSubmit)="onSumbit(contactForm)">
+  <p>
+    <label for="firstname">First Name</label>
+    <input
+      type="text"
+      id="firstname"
+      name="firstname"
+      [(ngModel)]="contactModel.firstname"
+    />
+  </p>
+
+  <p>
+    <label for="lastname">Last Name</label>
+    <input
+      type="text"
+      id="lastname"
+      name="lastname"
+      [(ngModel)]="contactModel.lastname"
+    />
+  </p>
+
+  <p>
+    <label for="email">Email </label>
+    <input
+      type="text"
+      id="email"
+      name="email"
+      [(ngModel)]="contactModel.email"
+    />
+  </p>
+
+  <p>
+    <label for="gender">Geneder</label>
+    <input
+      type="radio"
+      name="gender"
+      [(ngModel)]="contactModel.gender"
+      value="male"
+    />
+    Male
+    <input
+      type="radio"
+      name="gender"
+      [(ngModel)]="contactModel.gender"
+      value="female"
+    />
+    Female
+  </p>
+
+  <p>
+    <label for="isMarried">Married</label>
+    <input
+      type="checkbox"
+      id="isMarried"
+      name="isMarried"
+      [(ngModel)]="contactModel.isMarried"
+    />
+  </p>
+
+  <p>
+    <label for="country">country </label>
+    <select name="country" id="country" [(ngModel)]="contactModel.country">
+      <option selected="" value=""></option>
+      <option [ngValue]="c.id" *ngFor="let c of countryList">
+        {{ c?.name }}
+      </option>
+    </select>
+  </p>
+
+  <div ngModelGroup="address">
+    <p>
+      <label for="city">City</label>
+      <input type="text" name="city"  id="city" [(ngModel)]="contactModel.address.city" />
+    </p>
+
+    <p>
+      <label for="street">Street</label>
+      <input
+        type="text"
+        name="street"
+        [(ngModel)]="contactModel.address.street"
+      />
+    </p>
+    <p>
+      <label for="pincode">Pin Code</label>
+      <input
+        type="text"
+        name="pincode"
+        [(ngModel)]="contactModel.address.pincode"
+      />
+    </p>
+  </div>
+
+  <p>
+    <button type="submit">Submit</button>
+  </p>
+</form>
+
+{{ contactModel | json }}
