@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { ContactForm } from '../landing/contact.form.model';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { ContactForm } from '../../shared/models/contact.form.model';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-register',
@@ -7,6 +8,8 @@ import { ContactForm } from '../landing/contact.form.model';
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent implements OnInit {
+
+  @ViewChild('contactForm') contactForm:NgForm;
 
   countryList = [{ id: 1, name: 'JORDAN' }, { id: 2, name: 'Egypt' }];
 
@@ -24,6 +27,10 @@ export class RegisterComponent implements OnInit {
     console.log(form.value);
     console.log(form.valid);
     console.log(this.contactModel);
+  }
+
+  reset(){
+    this.contactForm.reset();
   }
 
 }

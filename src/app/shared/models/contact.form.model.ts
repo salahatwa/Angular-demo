@@ -4,7 +4,7 @@ export class ContactForm {
     email?: string;
     gender?: string;
     isMarried?: boolean;
-    country?: string;
+    country?: number;
     address?: Address;
 }
 

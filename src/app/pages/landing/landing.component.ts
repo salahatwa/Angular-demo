@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy, OnChanges, AfterViewInit } from '@angular/core';
-import { ContactForm } from './contact.form.model';
+import { ContactForm } from '../../shared/models/contact.form.model';
 import { FormGroup, NgForm } from '@angular/forms';
 
 @Component({

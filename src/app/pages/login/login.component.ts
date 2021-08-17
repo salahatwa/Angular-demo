@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
+import { ContactForm } from '../../shared/models/contact.form.model';
 
 @Component({
   selector: 'app-login',
@@ -7,41 +9,63 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-  name = "Tile one";
-  num = 0;
+  countryList = [{ id: 1, name: 'JORDAN' }, { id: 2, name: 'Egypt' }];
 
-  disable = false;
+  contactModel: ContactForm = {
+    firstname: 'Mohamed',
+    lastname:'samm',
+    country:2,
+    address: {
+      city:'Cairo'
+    }
+  };
 
-  fontSize = '24px';
+  contactForm: FormGroup;
 
-  formModel = {
-    userEmail: '',
-    password: ''
-  }
-
-
-
-  constructor() { }
+  constructor(private fb:FormBuilder) { }
 
   ngOnInit(): void {
+    //Load cutomer detials
+
+    this.initForm(this.contactModel);
   }
 
 
-  model={
-    num1:0,
-    num2:0
+  initForm(contactModel: ContactForm) {
+    // this.contactForm = new FormGroup(
+    //   {
+    //     firstname: new FormControl(contactModel.firstname),
+    //     lastname: new FormControl(contactModel.lastname),
+    //     email: new FormControl(contactModel.email),
+    //     gender: new FormControl(contactModel.gender),
+    //     isMarried: new FormControl(contactModel.isMarried),
+    //     country: new FormControl(contactModel.country)
+    //   }
+    // );
+
+    this.contactForm = this.fb.group(
+      {
+        firstname: new FormControl(contactModel.firstname),
+        lastname: new FormControl(contactModel.lastname),
+        email: new FormControl(contactModel.email),
+        gender: new FormControl(contactModel.gender),
+        isMarried: new FormControl(contactModel.isMarried),
+        country: new FormControl(contactModel.country),
+        address:this.fb.group({
+          city: new FormControl(contactModel.address.city),
+          street: new FormControl(contactModel.address.street),
+          pincode: new FormControl(contactModel.address.pincode),
+        })
+      }
+    );
   }
 
-  result;
-
-  sum():number{
-    this.result=this.model.num1+this.model.num2;
-    return this.result;
+  onSumbit(form) {
+    console.log(form.value);
+    console.log(form.valid);
   }
 
-  sum2():void{
-    console.log('>>>>>>>>>>>>');
-
+  reset(){
+    this.contactForm.reset();
   }
-
 }
