@@ -1,13 +1,24 @@
 <form [formGroup]="contactForm" (ngSubmit)="onSumbit(contactForm)">
-  <p>
+  <div>
     <label for="firstname">First Name</label>
     <input
       type="text"
       id="firstname"
       name="firstname"
-     formControlName="firstname"
+      formControlName="firstname"
     />
-  </p>
+    <span
+      *ngIf="
+        !contactForm.get('firstname')?.valid &&
+        (contactForm.get('firstname')?.touched ||
+          contactForm.get('firstname')?.dirty)
+      "
+    >
+      <span *ngIf="contactForm.get('firstname')?.errors?.required">
+        First Name is not valid
+      </span>
+    </span>
+  </div>
 
   <p>
     <label for="lastname">Last Name</label>
@@ -21,29 +32,33 @@
 
   <p>
     <label for="email">Email </label>
-    <input
-      type="text"
-      id="email"
-      name="email"
-      formControlName="email"
-    />
+    <input type="text" id="email" name="email" formControlName="email" />
+  </p>
+
+  <p>
+    <label for="email">Age </label>
+    <input type="number" id="age" name="age" formControlName="age" />
+    <span
+    *ngIf="
+      !contactForm.get('age')?.valid &&
+      (contactForm.get('age')?.touched || contactForm.get('age')?.dirty)
+    "
+  >
+    <span *ngIf="contactForm.get('age')?.errors?.required">
+      Age value is required
+    </span>
+    <span *ngIf="contactForm.get('age')?.errors?.gte">
+     Age value is invalid {{contactForm.get('age').errors.requiredValue}}
+    </span>
+  </span>
+    
   </p>
 
   <p>
     <label for="gender">Geneder</label>
-    <input
-      type="radio"
-      name="gender"
-      formControlName="gender"
-      value="male"
-    />
+    <input type="radio" name="gender" formControlName="gender" value="male" />
     Male
-    <input
-      type="radio"
-      name="gender"
-      formControlName="gender"
-      value="female"
-    />
+    <input type="radio" name="gender" formControlName="gender" value="female" />
     Female
   </p>
 
@@ -59,7 +74,7 @@
 
   <p>
     <label for="country">country </label>
-    <select name="country" id="country"  formControlName="country">
+    <select name="country" id="country" formControlName="country">
       <option selected="" value=""></option>
       <option [ngValue]="c.id" *ngFor="let c of countryList">
         {{ c?.name }}
@@ -70,29 +85,21 @@
   <div formGroupName="address">
     <p>
       <label for="city">City</label>
-      <input type="text" name="city"  id="city"   formControlName="city"/>
+      <input type="text" name="city" id="city" formControlName="city" />
     </p>
 
     <p>
       <label for="street">Street</label>
-      <input
-        type="text"
-        name="street"
-        formControlName="street"
-      />
+      <input type="text" name="street" formControlName="street" />
     </p>
     <p>
       <label for="pincode">Pin Code</label>
-      <input
-        type="text"
-        name="pincode"
-        formControlName="pincode"
-      />
+      <input type="text" name="pincode" formControlName="pincode" />
     </p>
   </div>
 
   <p>
-    <button type="submit">Submit</button>
+    <button type="submit" [disabled]="!contactForm.valid">Submit</button>
     <button type="button" (click)="reset()">Reset</button>
     <button type="reset">Reset2</button>
   </p>

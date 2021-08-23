@@ -6,7 +6,22 @@
       id="firstname"
       name="firstname"
       [(ngModel)]="contactModel.firstname"
+      required
+
+      #firstname="ngModel"
     />
+
+    <span
+    *ngIf="
+      !firstname?.valid &&
+      (firstname?.touched || firstname?.dirty)
+    "
+  >
+    <span *ngIf="firstname?.errors?.required">
+      FirstName value is required
+    </span>
+    </span>
+    
   </p>
 
   <p>
@@ -17,6 +32,26 @@
       name="lastname"
       [(ngModel)]="contactModel.lastname"
     />
+  </p>
+
+  <p>
+    <label for="age">Age </label>
+    <input type="number" id="age" name="age"  [(ngModel)]="contactModel.age"  #age="ngModel"
+    required appGteValidator/>
+    <span
+    *ngIf="
+      !age?.valid &&
+      (age?.touched || age?.dirty)
+    "
+  >
+    <span *ngIf="age?.errors?.required">
+      Age value is required
+    </span>
+    <span *ngIf="age?.errors?.gte">
+     Age value is invalid {{age.errors.requiredValue}}
+    </span>
+  </span>
+    
   </p>
 
   <p>
@@ -92,7 +127,7 @@
   </div>
 
   <p>
-    <button type="submit">Submit</button>
+    <button type="submit" [disabled]="!contactForm.valid">Submit</button>
     <button type="button" (click)="reset()">Reset</button>
     <button type="reset">Reset2</button>
   </p>

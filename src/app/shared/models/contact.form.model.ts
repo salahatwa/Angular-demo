@@ -1,6 +1,7 @@
 export class ContactForm {
     firstname?: string;
     lastname?: string;
+    age?:number;
     email?: string;
     gender?: string;
     isMarried?: boolean;
